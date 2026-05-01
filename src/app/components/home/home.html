@@ -1,15 +1,17 @@
 <main>
-    <h1>Lista de Tarefas</h1>
+    <h1>To-do List</h1>
     <div class="todo-list-container">
-    <div>
-        <input type="text" placeholder="Digite uma tarefa" [(ngModel)]="todo" />
-        <button (click)="addTodoItem(todo)" class="add-button">+</button>
-    </div>
-        @for(item of todoList; track item.id){
-            <div class="item">
-                <div><input type="checkbox" /> {{item.name}}</div>
-                <button class="edit-button" (click)="openDialog('200ms', '100ms', item.id)"><ng-icon name="monoEdit"/></button>
-            </div>
-        }
+        <div>
+            <input type="text" placeholder="Type a task" [(ngModel)]="todo" />
+            <button (click)="addTodoItem(todo)" class="add-button">+</button>
+        </div>
+        <div class="item-list" cdkDropList (cdkDropListDropped)="drop($event)">
+            @for(item of todoList; track item.id){
+                <div cdkDrag class="item">
+                    <div><input type="checkbox" /> {{item.name}}</div>
+                    <button class="edit-button" (click)="openDialog('200ms', '100ms', item.id)"><ng-icon name="monoEdit"/></button>
+                </div>
+            }
+        </div>
     </div>
 </main>

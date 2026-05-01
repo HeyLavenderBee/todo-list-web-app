@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { monoEdit } from '@ng-icons/mono-icons';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { EditTodoModal } from '../edit-todo-modal/edit-todo-modal';
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 
 interface Todo {
     id: number,
@@ -14,7 +15,7 @@ interface Todo {
 
 @Component({
   selector: 'app-home',
-  imports: [Header, FormsModule, NgIcon, MatButtonModule, EditTodoModal],
+  imports: [Header, FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList],
   templateUrl: './home.html',
   styleUrl: './home.css',
   viewProviders: [provideIcons({ monoEdit })],
@@ -26,11 +27,16 @@ export class Home {
   readonly editedItem = signal('');
   readonly editedItemId = signal('');
   todo: string = "";
-  todoList: Todo[] = [{id: 0, name: "tarefa 1"}, {id: 1, name: "tarefa 2"}];
+  todoList: Todo[] = [{id: 0, name: "Task 1"}, {id: 1, name: "Task 2"}];
   todoListSize: number = 0; 
 
   addTodoItem(todo: string){
+    if(todo == ""){
+      alert("Type a task to add it");
+      return;
+    }
     this.todoList.push({id: this.todoList.length, name: todo});
+    this.todo = "";
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: number): void {
@@ -43,11 +49,19 @@ export class Home {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined){
-        this.todoList[id].name = result;
-        console.log(this.todoList);
-        this.cdr.detectChanges();
+      if(result == ""){
+        alert("Task wasn't edited: there needs to be a content for it to be edited")
+        return;
       }
+      else if(result == undefined){
+        return;
+      }
+      this.todoList[id].name = result;
+      this.cdr.detectChanges();
     })
+  }
+
+  drop(event: CdkDragDrop<object[]>){
+    moveItemInArray(this.todoList, event.previousIndex, event.currentIndex);
   }
 }

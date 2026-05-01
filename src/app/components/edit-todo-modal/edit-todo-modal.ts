@@ -12,7 +12,7 @@ export interface DialogData {
 
 @Component({
   selector: 'app-edit-todo-modal',
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, FormsModule, MatInput, MatFormField, MatLabel],
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, FormsModule, MatInput, MatFormField, MatLabel],
   templateUrl: './edit-todo-modal.html',
   styleUrl: './edit-todo-modal.css',
 })
