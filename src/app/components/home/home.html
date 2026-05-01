@@ -3,12 +3,12 @@
     <div class="todo-list-container">
     <div>
         <input type="text" placeholder="Digite uma tarefa" [(ngModel)]="todo" />
-        <button (click)="addTodoItem(todo)">+</button>
+        <button (click)="addTodoItem(todo)" class="add-button">+</button>
     </div>
         @for(item of todoList; track item.id){
             <div class="item">
-                <input type="checkbox" /> {{item.name}}
-                <button (click)="editTodoItem(item.id)">Editar</button>
+                <div><input type="checkbox" /> {{item.name}}</div>
+                <button class="edit-button" (click)="openDialog('200ms', '100ms', item.id)"><ng-icon name="monoEdit"/></button>
             </div>
         }
     </div>
