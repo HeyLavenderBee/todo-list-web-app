@@ -11,15 +11,36 @@ h1{
 }
 
 .todo-list-container{
-    width: 30rem;
+    width: 32rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 350px){
+        width: 12rem;
+    }
+
+    @media (max-width: 576px){
+        width: 20rem;
+    }
+
+    @media (max-width: 768px){
+        width: 25rem;
+    }
+}
+
+.task-add-container{
+    height: 3rem;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 input[type="text"]{
-    margin-bottom: 1.5rem;
+    width: 100%;
     border-radius: 0.9rem;
     border: none;
     padding: 0.5rem 0.8rem;
@@ -37,7 +58,6 @@ input[type="text"]{
     padding: 0.5rem;
     border-radius: 0.9rem;
     width: 3rem;
-    height: auto;
     cursor: pointer;
     transition: background-color 0.6s ease;
 }
@@ -95,4 +115,10 @@ input[type="text"]{
 
 .cdk-drag-placeholder {
   opacity: 0;
+}
+
+@media (max-width: 575px){
+    .todo-list-container{
+        width: 20rem;
+    }
 }

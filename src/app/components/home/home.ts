@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal, ChangeDetectorRef }
 import { Header } from '../header/header';
 import { FormsModule } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { monoEdit } from '@ng-icons/mono-icons';
+import { monoEdit, monoAdd } from '@ng-icons/mono-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTodoModal } from '../edit-todo-modal/edit-todo-modal';
@@ -18,7 +18,7 @@ interface Todo {
   imports: [Header, FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList],
   templateUrl: './home.html',
   styleUrl: './home.css',
-  viewProviders: [provideIcons({ monoEdit })],
+  viewProviders: [provideIcons({ monoEdit, monoAdd })],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
@@ -40,7 +40,13 @@ export class Home {
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: number): void {
-    this.editedItem.set(this.todoList[id].name);
+    for(let i = 0; i < this.todoList.length; i++){
+      if(this.todoList[i].id == id){
+        this.editedItem.set(this.todoList[i].name);
+        break;
+      }
+    }
+    
     const dialogRef = this.dialog.open(EditTodoModal, {
       width: '250px',
       enterAnimationDuration,
