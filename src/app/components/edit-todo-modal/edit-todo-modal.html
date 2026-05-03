@@ -1,11 +1,14 @@
 <main>
     <h3 mat-dialog-title>Edit task: {{data.id}}</h3>
-    <mat-form-field>
-        <mat-label>Edit task</mat-label>
-        <input matInput [(ngModel)]="editedItem" />
-    </mat-form-field>
+    <mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Edit task</mat-label>
+            <input matInput [(ngModel)]="editedItem" />
+        </mat-form-field>
+    </mat-dialog-content>
+    
     <mat-dialog-actions>
         <button matButton (click)="cancel()">Cancel</button>
-        <button matButton [mat-dialog-close]="editedItem()" cdkFocusInitial>Edit</button>
+        <button matButton (click)="editTodo()" cdkFocusInitial>Edit</button>
     </mat-dialog-actions>
 </main>

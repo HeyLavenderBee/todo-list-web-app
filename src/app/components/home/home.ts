@@ -15,7 +15,7 @@ interface Todo {
 
 @Component({
   selector: 'app-home',
-  imports: [Header, FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList],
+  imports: [Header, FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList, EditTodoModal],
   templateUrl: './home.html',
   styleUrl: './home.css',
   viewProviders: [provideIcons({ monoEdit, monoAdd })],
@@ -29,11 +29,15 @@ export class Home {
   todo: string = "";
   todoList: Todo[] = [{id: 0, name: "Task 1"}, {id: 1, name: "Task 2"}];
   todoListSize: number = 0; 
+  todoNameLimitSize: number = 100;
 
   addTodoItem(todo: string){
     if(todo == ""){
       alert("Type a task to add it");
       return;
+    }
+    else if(todo.length > this.todoNameLimitSize){
+      alert("The name of the to-do must be up to 100 characters long");
     }
     this.todoList.push({id: this.todoList.length, name: todo});
     this.todo = "";
@@ -65,6 +69,8 @@ export class Home {
       this.todoList[id].name = result;
       this.cdr.detectChanges();
     })
+
+    
   }
 
   drop(event: CdkDragDrop<object[]>){
