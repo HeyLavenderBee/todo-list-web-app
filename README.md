@@ -2,8 +2,10 @@
 A to-do list web application made using Angular.
 <br>
 Organize your to-dos with this web app!
-<br><br>
+<br>
 Create to-dos, edit and drag and drop them the way you like.
+<br><br>
+Your tasks are automatically saved on the browser, using a LocalStorage service, so the tasks won't reload even when you reset your computer.
 
 ### Libraries used
 - Cdk Drag Drop
@@ -22,7 +24,7 @@ Create to-dos, edit and drag and drop them the way you like.
 
 ### How to execute the project on your computer
 1 - Clone this repository on your computer:
-`git clone https://github.com/TechFellasAbp/sprint-master.git`
+`git clone https://github.com/HeyLavenderBee/todo-list-web-app.git`
 
 2 - Open the folder, either on Terminal or VSCode, and install the dependencies with this command: `npm i`
 

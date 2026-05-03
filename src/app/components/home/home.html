@@ -9,7 +9,10 @@
             @for(item of todoList; track item.id){
                 <div cdkDrag class="item">
                     <div><input type="checkbox" /> {{item.name}}</div>
-                    <button class="edit-button" (click)="openDialog('200ms', '100ms', item.id)"><ng-icon name="monoEdit"/></button>
+                    <div class="action-buttons">
+                        <button class="edit-button" (click)="openDialog('200ms', '100ms', item.id)"><ng-icon name="monoEdit"/></button>
+                        <button class="edit-button" (click)="deleteTodoItem(item.id)"><ng-icon name="monoDelete"/></button>
+                    </div>
                 </div>
             }
         </div>

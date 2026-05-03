@@ -1,9 +1,8 @@
 import { Component, inject, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle, } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInput, MatFormField, MatInputModule, MatLabel } from "@angular/material/input";
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle, } from '@angular/material/dialog';
+import { MatInput, MatFormField, MatLabel } from "@angular/material/input";
 
 export interface DialogData {
   id: number,
@@ -12,7 +11,7 @@ export interface DialogData {
 
 @Component({
   selector: 'app-edit-todo-modal',
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, FormsModule, MatInput, MatFormField, MatLabel, MatDialogContent],
+  imports: [MatButtonModule, MatDialogActions, MatDialogTitle, FormsModule, MatInput, MatFormField, MatLabel, MatDialogContent],
   templateUrl: './edit-todo-modal.html',
   styleUrl: './edit-todo-modal.css',
 })

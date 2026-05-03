@@ -66,6 +66,11 @@ input[type="text"]{
     background-color: #f19b45;
 }
 
+.action-buttons{
+    display: flex;
+    gap: 0.5rem;
+}
+
 .edit-button{
     display: flex;
     justify-content: center;
