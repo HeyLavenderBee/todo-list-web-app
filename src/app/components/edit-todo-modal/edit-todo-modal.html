@@ -3,7 +3,7 @@
     <mat-dialog-content>
         <mat-form-field>
             <mat-label>Edit task</mat-label>
-            <input matInput [(ngModel)]="editedItem" />
+            <input matInput [(ngModel)]="editedItem" (keyup.enter)="editTodo()"/>
         </mat-form-field>
     </mat-dialog-content>
     

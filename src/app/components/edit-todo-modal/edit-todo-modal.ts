@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef, MatD
 import { MatInput, MatFormField, MatLabel } from "@angular/material/input";
 
 export interface DialogData {
-  id: number,
+  id: string,
   editedItem: string
 }
 
@@ -28,11 +28,9 @@ export class EditTodoModal {
   editTodo(){
     if(this.editedItem().length < 1){
       alert("The task's name need to be of at leat one character");
-      //this.editedItem.set(this.receivedItem);
       return;
     } else if(this.editedItem().length > 100){
       alert("The task's name needs to be of up to 100 characters");
-      //this.editedItem.set(this.receivedItem);
       return;
     }
     this.dialogRef.close(this.editedItem());

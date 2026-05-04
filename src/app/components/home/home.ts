@@ -8,15 +8,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditTodoModal } from '../edit-todo-modal/edit-todo-modal';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { LocalStorage } from '../../services/local-storage';
+import { NgClass } from '@angular/common';
 
 interface Todo {
-    id: number,
-    name: string
+    id: string,
+    name: string,
+    done: boolean
 }
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList],
+  imports: [FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList, NgClass],
   templateUrl: './home.html',
   styleUrl: './home.css',
   viewProviders: [provideIcons({ monoEdit, monoAdd, monoDelete })],
@@ -30,8 +32,7 @@ export class Home implements OnInit {
   readonly editedItem = signal('');
   readonly editedItemId = signal('');
   todo: string = "";
-  todoList: Todo[] = [{id: 0, name: "Task 1"}, {id: 1, name: "Task 2"}];
-  todoListSize: number = 0; 
+  todoList: Todo[] = [{id: self.crypto.randomUUID(), name: "Task 1", done: false}, {id: self.crypto.randomUUID(), name: "Task 2", done: false}];
   todoNameLimitSize: number = 100;
 
   ngOnInit(){
@@ -39,20 +40,56 @@ export class Home implements OnInit {
   }
 
   addTodoItem(todo: string){
+    if(this.todoList.length >= 100){
+      alert("There is a limit of 200 tasks for user. Please, delete one to add a new task");
+      return;
+    }
     if(todo == ""){
       alert("Type a task to add it");
       return;
     }
     else if(todo.length > this.todoNameLimitSize){
       alert("The name of the to-do must be up to 100 characters long");
+      return;
     }
-    this.todoList.push({id: this.todoList.length, name: todo});
+    this.todoList.push({id: self.crypto.randomUUID(), name: todo, done: false});
     this.todo = "";
     this.saveToLocalStorage();
-    console.log(this.todoList);
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: number): void {
+  checkTodoItem(id: string): void{
+    const task = this.todoList.find(task => task.id === id);
+    if(task != undefined){
+      //marks the opposite it is now
+      task.done = !task.done;
+      if(task.done){
+        //reorder the tasks, for all the completed ones to be at the bottom
+        for(let i = 0; i < this.todoList.length; i++){
+          if(this.todoList[i].id == id && this.todoList[i].done){
+            let todo = this.todoList[i];
+            this.todoList.splice(i, 1)[0];
+            this.todoList.splice(this.todoList.length, 0, todo);
+            break;
+          }
+        }
+      } else{
+        //puts the unchecked item to the top of the list
+        for(let i = 0; i < this.todoList.length; i++){
+          if(this.todoList[i].id == id && !this.todoList[i].done){
+            let todo = this.todoList[i];
+            this.todoList.splice(i, 1)[0];
+            this.todoList.unshift(todo);
+            console.log(this.todoList);
+            break;
+          }
+        }
+      }
+    }
+    this.saveToLocalStorage();
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: string): void {
+    //set the var editedItem with the item chosen for editing by finding it by its id
     for(let i = 0; i < this.todoList.length; i++){
       if(this.todoList[i].id == id){
         this.editedItem.set(this.todoList[i].name);
@@ -75,28 +112,28 @@ export class Home implements OnInit {
       else if(result == undefined){
         return;
       }
-      this.todoList[id].name = result;
+
+      //instead of making a for loop, this is a way to find the task by id!
+      const taskToEdit = this.todoList.find(task => task.id === id);
+      if(taskToEdit){
+        taskToEdit.name = result;
+      }
       this.saveToLocalStorage();
       this.cdr.detectChanges();
     })
   }
 
-  deleteTodoItem(id: number){
+  deleteTodoItem(id: string){
+    //finds the item in the todo list to remove it
+    //it has a for loop because each item is an object inside an array, and the id is located inside the object
+    //TODO: later update it with find() function
     for(let i = 0; i < this.todoList.length; i++){
       if(this.todoList[i].id == id){
         this.todoList.splice(i, 1);
         this.saveToLocalStorage();
-        break;
+        return;
       }
     }
-
-    //TEMPORARY: rearange objects id's, so when you delete by id, there aren't duplicates
-    /*
-    for(let i = 0; i < this.todoList.length; i++){
-      this.todoList[i].id = i;
-    }
-    */
-    console.log(this.todoList);
   }
 
   drop(event: CdkDragDrop<object[]>){
@@ -111,5 +148,8 @@ export class Home implements OnInit {
   getFromLocalStorage(): void{
     const value = this.localStorageService.getItem('0');
     this.todoList = JSON.parse(value ? value : "");
+    for(let i = 0; i < this.todoList.length; i++){
+
+    }
   }
 }
