@@ -1,0 +1,17 @@
+<main>
+    <div class="card-container">
+        <div class="illustration-card">
+            oie
+        </div>
+        <div class="card">
+            <h2>Hello again!</h2>
+            <form (keydown.enter)="$event.preventDefault()">
+                <input type="text" [(ngModel)]="userName" placeholder="Type in your name" id="name" name="name" required /><br>
+                <input type="email" [(ngModel)]="email" placeholder="Email" id="email" name="email" /><br>
+                <input type="password" [(ngModel)]="password" placeholder="Create a password" id="password" name="password" /><br>
+            </form>
+            <button type="submit" (click)="login()">Log in</button>
+            <p>Don't have an account yet? <a (click)="goToRegister()">Create one!</a></p>
+        </div>
+    </div>
+</main>

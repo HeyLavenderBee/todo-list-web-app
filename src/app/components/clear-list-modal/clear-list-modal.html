@@ -1,0 +1,12 @@
+<main>
+    <h3 mat-dialog-title>Clear tasks</h3>
+    <mat-dialog-content>
+        <mat-label>Are you sure you want to delete all tasks?</mat-label><br>
+        <mat-label>This action can't be undone.</mat-label>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button matButton (click)="cancel()">Cancel</button>
+        <button class="clear-button" (click)="clearItems()" cdkFocusInitial>Clear</button>
+    </mat-dialog-actions>
+</main>

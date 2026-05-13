@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+:root{
+    --bg-yellow: rgb(244, 235, 216);
+    --text: rgb(27, 21, 20);
+    --button-color: #E8CD7D;
+    --link-color: #eeab11;
+    --link-color-hover: #c68c05;
+}
+
 *{
     box-sizing: border-box;
 }

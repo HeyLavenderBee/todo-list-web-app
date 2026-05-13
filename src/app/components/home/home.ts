@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Header } from '../header/header';
 import { FormsModule } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -9,6 +10,7 @@ import { EditTodoModal } from '../edit-todo-modal/edit-todo-modal';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { LocalStorage } from '../../services/local-storage';
 import { NgClass } from '@angular/common';
+import { ClearListModal } from '../clear-list-modal/clear-list-modal';
 
 interface Todo {
     id: string,
@@ -25,21 +27,41 @@ interface Todo {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home implements OnInit {
-  constructor(private localStorageService: LocalStorage){}
+  constructor(private localStorageService: LocalStorage, private router: Router){}
+
+  private route = inject(ActivatedRoute);
+  userName: string | null = "";
 
   private cdr = inject(ChangeDetectorRef);
   readonly dialog = inject(MatDialog);
+  readonly clearDialog = inject(MatDialog);
   readonly editedItem = signal('');
-  readonly editedItemId = signal('');
+  readonly clearList = signal(false);
   todo: string = "";
   todoList: Todo[] = [{id: self.crypto.randomUUID(), name: "Task 1", done: false}, {id: self.crypto.randomUUID(), name: "Task 2", done: false}];
   todoNameLimitSize: number = 100;
 
-  ngOnInit(){
-    this.getFromLocalStorage();
+  redirectToLogin(): void{
+   this.route.queryParams.subscribe((params) => {
+    this.userName = params['userName']
+   });
+   this.cdr.detectChanges();
   }
 
-  addTodoItem(todo: string){
+  ngOnInit(): void{
+    this.getFromLocalStorage();
+    this.redirectToLogin();
+  }
+
+  goToRegister(): void{
+    this.router.navigate(['/register']);
+  }
+
+  goToLogin(): void{
+    this.router.navigate(['/login']);
+  }
+
+  addTodoItem(todo: string): void{
     if(this.todoList.length >= 100){
       alert("There is a limit of 200 tasks for user. Please, delete one to add a new task");
       return;
@@ -123,7 +145,27 @@ export class Home implements OnInit {
     })
   }
 
-  deleteTodoItem(id: string){
+  clearItems(enterAnimationDuration: string, exitAnimationDuration: string): void{
+    const dialogRef = this.dialog.open(ClearListModal, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {clearList: this.clearList()}
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if(result){
+        console.log("deletado");
+        this.todoList = [];
+        this.saveToLocalStorage();
+        this.cdr.detectChanges();
+        return;
+      }
+    })
+  }
+
+  deleteTodoItem(id: string): void{
     //finds the item in the todo list to remove it
     //it has a for loop because each item is an object inside an array, and the id is located inside the object
     //TODO: later update it with find() function
@@ -149,7 +191,6 @@ export class Home implements OnInit {
     const value = this.localStorageService.getItem('0');
     this.todoList = JSON.parse(value ? value : "");
     for(let i = 0; i < this.todoList.length; i++){
-
     }
   }
 }
