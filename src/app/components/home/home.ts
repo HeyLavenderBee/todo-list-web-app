@@ -189,7 +189,7 @@ export class Home implements OnInit {
 
   getFromLocalStorage(): void{
     const value = this.localStorageService.getItem('0');
-    this.todoList = JSON.parse(value ? value : "");
+    this.todoList = JSON.parse(value ? value : "[]");
     for(let i = 0; i < this.todoList.length; i++){
     }
   }

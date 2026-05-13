@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ClearListModal } from './clear-list-modal';
 
 describe('ClearListModal', () => {
@@ -9,6 +9,16 @@ describe('ClearListModal', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ClearListModal],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {close: () => {}}
+        },
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {id: 1}
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ClearListModal);
