@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [22, 24]
     steps:
       - name: Checkout the source code
         uses: actions/checkout@v4
@@ -25,9 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Run server
-        run: npm run start
         
       - name: Run tests
-        run: npm test
+        run: npm test -- --watch=false --browser.name=chromium --browser.headless=true
+      
+      - name: Run build
+        run: npm run build
