@@ -27,7 +27,7 @@ jobs:
         run: npm ci
         
       - name: Run tests
-        run: npm test -- --watch=false --browser.name=chromium --browser.headless=true
+        run: npm test -- --no-watch --no-progress --browsers=ChromiumHeadless
       
       - name: Run build
         run: npm run build
