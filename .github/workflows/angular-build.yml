@@ -24,6 +24,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
+        run: cd frontend_angular
         run: npm ci
         
       - name: Run tests
