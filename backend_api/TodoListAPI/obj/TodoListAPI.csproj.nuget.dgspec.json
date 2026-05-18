@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julia\\Desktop\\todo-list\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj": {}
+    "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\TodoListAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julia\\Desktop\\todo-list\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj": {
+    "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\TodoListAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julia\\Desktop\\todo-list\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj",
+        "projectUniqueName": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\TodoListAPI.csproj",
         "projectName": "TodoListAPI",
-        "projectPath": "C:\\Users\\julia\\Desktop\\todo-list\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj",
+        "projectPath": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\TodoListAPI.csproj",
         "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julia\\Desktop\\todo-list\\TodoListAPI\\TodoListAPI\\obj\\",
+        "outputPath": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -45,10 +46,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "FluentValidation": {
@@ -58,6 +60,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.5, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.1, )"
             },
             "Scalar.AspNetCore": {
               "target": "Package",
@@ -83,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

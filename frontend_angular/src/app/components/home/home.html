@@ -7,7 +7,7 @@
         <h1>To-do List</h1>
         <div class="todo-list-container">
             <div class="task-add-container">
-                <input type="text" placeholder="Type a task" [(ngModel)]="todo" (keyup.enter)="addTodoItem(todo)" />
+                <input type="text" placeholder="Type a task" [(ngModel)]="todo" (ngModelChange)="checkTodoNameInputLimit($event)" (keyup.enter)="addTodoItem(todo)" />
                 <button (click)="addTodoItem(todo)" class="add-button"><ng-icon name="monoAdd" /></button>
             </div>
             <div class="item-list" cdkDropList (cdkDropListDropped)="drop($event)">

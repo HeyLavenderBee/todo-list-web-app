@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "TodoListAPI.Controllers.TodoController",
+    "Method": "GetTodoJson",
+    "RelativePath": "api/Todo",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TodoListAPI.Controllers.TodoController",
     "Method": "Index",
     "RelativePath": "api/Todo",
     "HttpMethod": "",

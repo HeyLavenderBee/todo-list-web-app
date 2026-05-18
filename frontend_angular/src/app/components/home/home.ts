@@ -13,9 +13,9 @@ import { NgClass } from '@angular/common';
 import { ClearListModal } from '../clear-list-modal/clear-list-modal';
 
 interface Todo {
-    id: string,
-    name: string,
-    done: boolean
+  id: string,
+  name: string,
+  done: boolean
 }
 
 @Component({
@@ -39,18 +39,18 @@ export class Home implements OnInit {
   readonly clearList = signal(false);
   todo: string = "";
   todoList: Todo[] = [{id: self.crypto.randomUUID(), name: "Task 1", done: false}, {id: self.crypto.randomUUID(), name: "Task 2", done: false}];
-  todoNameLimitSize: number = 100;
+  todoNameLimitSize: number = 10;
+
+  ngOnInit(): void{
+    this.getFromLocalStorage();
+    this.redirectToLogin();
+  }
 
   redirectToLogin(): void{
    this.route.queryParams.subscribe((params) => {
     this.userName = params['userName']
    });
    this.cdr.detectChanges();
-  }
-
-  ngOnInit(): void{
-    this.getFromLocalStorage();
-    this.redirectToLogin();
   }
 
   goToRegister(): void{
@@ -61,9 +61,16 @@ export class Home implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  checkTodoNameInputLimit(input: string){
+    if(input.length > 10){
+      //alert("The name of the to-do must be up to 100 characters long");
+    }
+  }
+
   addTodoItem(todo: string): void{
-    if(this.todoList.length >= 100){
-      alert("There is a limit of 200 tasks for user. Please, delete one to add a new task");
+    console.log(todo)
+    if(this.todoList.length > 100){
+      alert("There is a limit of 100 tasks for todo list. Please, delete one to add a new task");
       return;
     }
     if(todo == ""){
