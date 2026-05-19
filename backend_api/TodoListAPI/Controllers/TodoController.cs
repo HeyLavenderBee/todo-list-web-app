@@ -29,28 +29,31 @@ namespace TodoListAPI.Controllers
         [HttpGet("GetTodos")]
         public async Task<IActionResult> GetTodos()
         {
-            //later make trycatch for not being able to reach table or database
-            SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("TodoListDbConn").ToString());
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM todos", conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            List<Todo> todoList = new List<Todo>();
-
-            if (dt.Rows.Count > 0)
+            var connString = _configuration.GetConnectionString("TodoListDbConn");
+            try
             {
-                for(int i = 0; i < dt.Rows.Count; i++)
-                {
-                    Todo todo = new Todo();
-                    todo.Name = Convert.ToString(dt.Rows[i]["todo_name"]);
-                    todoList.Add(todo);
-                }
-            }
+                SqlConnection conn = new SqlConnection(connString);
+                await conn.OpenAsync();
 
-            if (todoList.Count > 0)
-                return Ok(todoList);
-            else 
+                using var cmd = new SqlCommand("SELECT todo_name FROM todos", conn);
+                using var reader = await cmd.ExecuteReaderAsync();
+
+                List<Todo> todoList = new List<Todo>();
+                while (await reader.ReadAsync())
+                {
+                    Todo todo = new Todo { Name = reader.GetString(0)};
+                    todoList.Add(todo);
+                
+                }
+
+                if (todoList.Count > 0)
+                    return Ok(todoList);
                 return StatusCode(100, "No todo data found");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
         }
 
         [HttpPost("AddTodo")]

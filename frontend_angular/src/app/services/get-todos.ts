@@ -22,7 +22,7 @@ export class GetTodos {
   getTodos(){
     return this.http.get<TodoDb>(this.apiUrl).pipe(
       catchError((error: HttpErrorResponse) => {
-        return throwError(() => new Error("Ops, there was not possible to estabilish a connection to the server"));
+        return throwError(() => new Error("Ops, there was not possible to estabilish a connection to the server."));
       })
     );
   }

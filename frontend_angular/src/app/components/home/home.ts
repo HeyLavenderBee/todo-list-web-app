@@ -13,6 +13,7 @@ import { LocalStorage } from '../../services/local-storage';
 import { NgClass } from '@angular/common';
 import { ClearListModal } from '../clear-list-modal/clear-list-modal';
 import { GetTodos } from '../../services/get-todos';
+import { Subscription, interval } from 'rxjs';
 
 interface Todo {
   id: string,
@@ -51,19 +52,27 @@ export class Home implements OnInit {
   todoNameLimitSize: number = 10;
   todos$ = this.getTodosService.todos$;
   todos: TodoDb | null = null;
+  private timerSubscription!: Subscription;
 
   ngOnInit(): void{
     this.getFromLocalStorage();
     this.redirectToLogin();
     this.loadTodos()
+
+    //to garantee that a connection will be stabilished sometime
+    this.timerSubscription = interval(4000).subscribe(() => {
+      if(this.todos == null){
+        this.loadTodos();
+      }
+    })
   }
 
   async loadTodos(){
-    let a = this.getTodosService.getTodos().subscribe({
+    this.getTodosService.getTodos().subscribe({
       next: (data) => {
-        console.log("data", data);
         this.todos = data;
-        console.log("todois", this.todos);
+        //console.log(this.todos);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.log(err.message);
