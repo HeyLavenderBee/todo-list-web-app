@@ -21,14 +21,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: frontend_angular/package-lock.json
 
       - name: Install dependencies
-        run: cd frontend_angular
-        run: npm ci
-        
-      - name: Run tests
-        run: npm test -- --no-watch --no-progress --browsers=ChromiumHeadless
+        run: cd frontend_angular && npm ci
       
       - name: Run build
-        run: npm run build
+        run: cd frontend_angular && npm run build
+
+      - name: Run tests
+        run: cd frontend_angular && npm run test:ci

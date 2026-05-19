@@ -14,13 +14,11 @@ builder.Services.AddTransient<IValidator<TodoList>, TodoListValidator>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "Angular Policy",
+    options.AddPolicy(name: "AngularPolicy",
         policy =>
-        {
-            policy.WithOrigins("http://localhost:7200")
+            policy.WithOrigins("http://localhost:4200")
             .AllowAnyMethod()
-            .AllowAnyHeader();
-        }
+            .AllowAnyHeader()
     );
 });
 
@@ -34,7 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("Angular Policy");
+app.UseCors("AngularPolicy");
 
 app.UseAuthorization();
 

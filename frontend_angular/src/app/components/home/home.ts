@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, ChangeDetectorRef, OnInit } from '@angular/core';
+ import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Header } from '../header/header';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 import { LocalStorage } from '../../services/local-storage';
 import { NgClass } from '@angular/common';
 import { ClearListModal } from '../clear-list-modal/clear-list-modal';
+import { GetTodos } from '../../services/get-todos';
 
 interface Todo {
   id: string,
@@ -18,9 +20,15 @@ interface Todo {
   done: boolean
 }
 
+interface TodoDb {
+  id: string,
+  todo_name: string,
+  list_id: string
+}
+
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList, NgClass],
+  imports: [FormsModule, NgIcon, MatButtonModule, CdkDrag, CdkDropList, NgClass, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   viewProviders: [provideIcons({ monoEdit, monoAdd, monoDelete })],
@@ -29,6 +37,7 @@ interface Todo {
 export class Home implements OnInit {
   constructor(private localStorageService: LocalStorage, private router: Router){}
 
+  private getTodosService = inject(GetTodos);
   private route = inject(ActivatedRoute);
   userName: string | null = "";
 
@@ -40,10 +49,26 @@ export class Home implements OnInit {
   todo: string = "";
   todoList: Todo[] = [{id: self.crypto.randomUUID(), name: "Task 1", done: false}, {id: self.crypto.randomUUID(), name: "Task 2", done: false}];
   todoNameLimitSize: number = 10;
+  todos$ = this.getTodosService.todos$;
+  todos: TodoDb | null = null;
 
   ngOnInit(): void{
     this.getFromLocalStorage();
     this.redirectToLogin();
+    this.loadTodos()
+  }
+
+  async loadTodos(){
+    let a = this.getTodosService.getTodos().subscribe({
+      next: (data) => {
+        console.log("data", data);
+        this.todos = data;
+        console.log("todois", this.todos);
+      },
+      error: (err) => {
+        console.log(err.message);
+      }
+    });
   }
 
   redirectToLogin(): void{

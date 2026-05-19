@@ -4,13 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using TodoListAPI.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Text.Json.Serialization;
 
 namespace TodoListAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [EnableCors("Angular Policy")]
+    [EnableCors("AngularPolicy")]
     public class TodoController : Controller
     {
         private readonly IValidator<Todo> _todoValitador;

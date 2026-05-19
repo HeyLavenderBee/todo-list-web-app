@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\controllers\\todocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\controllers\\todocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\controllers\\todolistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\controllers\\todolistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD39DD03-BF76-6122-5D49-D122A49FF9F0}|TodoListAPI\\TodoListAPI.csproj|c:\\users\\julia\\desktop\\todo-list\\backend_api\\todolistapi\\models\\todolist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Response.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Models\\Response.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Models\\Response.cs",
@@ -54,12 +54,11 @@
               "RelativeToolTip": "TodoListAPI\\Models\\Response.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T14:50:25.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T14:50:25.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\appsettings.json",
               "RelativeDocumentMoniker": "TodoListAPI\\appsettings.json",
@@ -67,38 +66,37 @@
               "RelativeToolTip": "TodoListAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-18T14:34:43.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T14:34:43.994Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "TodoController.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Controllers\\TodoController.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\TodoController.cs",
               "ToolTip": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Controllers\\TodoController.cs",
               "RelativeToolTip": "TodoListAPI\\Controllers\\TodoController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAgwEYAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-17T13:55:29.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Todo.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Models\\Todo.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Models\\Todo.cs",
               "ToolTip": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Models\\Todo.cs",
               "RelativeToolTip": "TodoListAPI\\Models\\Todo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBAAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-17T13:54:46.888Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TodoListController.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Controllers\\TodoListController.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\TodoListController.cs",
@@ -106,18 +104,17 @@
               "RelativeToolTip": "TodoListAPI\\Controllers\\TodoListController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-17T13:34:02.608Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-17T13:34:02.608Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Program.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Program.cs",
-              "RelativeToolTip": "TodoListAPI\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAIBJwB4AAAAVAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\julia\\Desktop\\todo-list\\backend_api\\TodoListAPI\\Program.cs*",
+              "RelativeToolTip": "TodoListAPI\\Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-16T16:23:45.245Z",
               "EditorCaption": ""
@@ -132,8 +129,7 @@
               "RelativeToolTip": "TodoListAPI\\Models\\TodoList.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAzwA0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:16:54.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T16:16:54.418Z"
             },
             {
               "$type": "Document",
@@ -145,8 +141,7 @@
               "RelativeToolTip": "TodoListAPI\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:16:01.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T16:16:01.678Z"
             }
           ]
         }
